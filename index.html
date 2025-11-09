@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndyWeather Hub - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'indy-blue': '#1e3a8a', // Darker Blue
+                        'indy-gold': '#facc15', // Accent Gold
+                        'sky-light': '#38bdf8', // Light Blue for weather
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5940461.jpg&f=1&nofb=1&ipt=276e556f0988bf824d35282826b32c20e6e239376223e7e7f1c0548bfabfaa27');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 40vh;
+        }
+
+        .weather-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.85); 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-extrabold text-indy-blue tracking-wide">
+                        Indy<span class="text-sky-light">Weather</span>
+                    </a>
+                </div>
+                <div class="hidden sm:flex space-x-6 text-lg font-medium">
+                    <a href="index.html" class="text-indy-blue hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Forecast</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">About</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Maps & Radar</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Contact Us</a>
+                </div>
+
+                <button id="mobile-menu-button" class="sm:hidden p-2 rounded-md text-indy-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indy-blue">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+
+        <div id="mobile-menu" class="hidden sm:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-indy-blue bg-sky-light/10">Home</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Forecast</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">About</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Maps & Radar</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero-bg relative flex items-center justify-center text-center">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative max-w-5xl w-full p-8 md:p-12 lg:p-16">
+            <div class="weather-card mx-auto p-6 md:p-10 rounded-xl shadow-2xl transition duration-300 transform hover:scale-[1.01] border-4 border-indy-gold">
+                <p class="text-lg font-semibold text-gray-600 mb-2">Current Weather in</p>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-indy-blue leading-tight mb-4">
+                    Indianapolis, Indiana
+                </h1>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <span class="text-6xl md:text-7xl" id="weather-icon">🔄</span> 
+                    <p class="text-7xl md:text-8xl font-black text-indy-blue" id="temp-main">
+                        Loading...
+                    </p>
+                </div>
+
+                <p class="text-2xl md:text-3xl font-bold text-gray-700 mb-6" id="conditions">
+                    Fetching Data...
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4 text-gray-600 text-base md:text-lg font-medium">
+                    <div class="bg-gray-100 p-2 rounded-lg">Feels Like: <span class="font-semibold" id="temp-feels">--</span></div>
+                    <div class="bg-gray-100 p-2 rounded-lg">Wind: <span class="font-semibold" id="wind">--</span></div>
+                    <div class="bg-gray-100 p-2 rounded-lg">Humidity: <span class="font-semibold" id="humidity">--</span></div>
+                    <div class="bg-gray-100 p-2 rounded-lg">Precipitation: <span class="font-semibold" id="precipitation">--</span></div>
+                </div>
+
+                <p class="text-sm mt-6 text-gray-500" id="update-time">
+                    Waiting for data...
+                </p>
+
+            </div>
+        </div>
+    </main>
+
+    <section class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-indy-blue mb-6 border-b-2 border-sky-light pb-2">What's Happening</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <h3 class="text-xl font-semibold text-indy-blue mb-3">Daily Snow Forecast</h3>
+                <p class="text-gray-600">Expect periods of light snow throughout the day today with a high of 44°F. Travel conditions may be slick during the evening.</p>
+                <a href="#forecast" class="mt-4 inline-block text-sky-light hover:text-indy-blue font-medium">View 7-Day Forecast &rarr;</a>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <h3 class="text-xl font-semibold text-indy-blue mb-3">Check the Live Radar</h3>
+                <p class="text-gray-600">See the current precipitation moving across the region on our interactive radar map. Stay ahead of the storm!</p>
+                <a href="#maps" class="mt-4 inline-block text-sky-light hover:text-indy-blue font-medium">Go to Maps & Radar &rarr;</a>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <h3 class="text-xl font-semibold text-indy-blue mb-3">Winter Weather Prep</h3>
+                <p class="text-gray-600">Read our guide on preparing your home and vehicle for the upcoming winter season in Central Indiana.</p>
+                <a href="#about" class="mt-4 inline-block text-sky-light hover:text-indy-blue font-medium">Read Article &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-indy-blue text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-lg font-semibold">
+                    &copy; 2025 IndyWeather Hub. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-indy-gold transition duration-150">Privacy Policy</a>
+                    <a href="contact.html" class="hover:text-indy-gold transition duration-150">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function getWindDirection(deg) {
+            const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+            const index = Math.round((deg % 360) / 45);
+            return directions[index % 8];
+        }
+
+        function getWeatherDetails(code) {
+            let condition = "Unknown";
+            let icon = "❓";
+
+            if (code === 0) {
+                condition = "Clear Sky";
+                icon = "☀️";
+            } else if (code >= 1 && code <= 3) {
+                condition = "Partly Cloudy";
+                icon = "🌥️";
+            } else if (code >= 45 && code <= 48) {
+                condition = "Fog";
+                icon = "🌫️";
+            } else if (code >= 51 && code <= 55) {
+                condition = "Drizzle";
+                icon = "🌧️";
+            } else if (code >= 61 && code <= 65) {
+                condition = "Rain";
+                icon = "🌧️";
+            } else if (code >= 71 && code <= 75) {
+                condition = "Snow Fall";
+                icon = "🌨️";
+            } else if (code >= 95 && code <= 99) {
+                condition = "Thunderstorm";
+                icon = "⛈️";
+            }
+
+            return { condition, icon };
+        }
+
+        function updateWeatherDisplay(data) {
+            document.getElementById('temp-main').innerHTML = `${Math.round(data.temp_f)}&deg;F`;
+            document.getElementById('weather-icon').textContent = data.icon; 
+            document.getElementById('conditions').textContent = data.condition;
+            
+            document.getElementById('temp-feels').innerHTML = `${Math.round(data.feelslike_f)}&deg;F`;
+            document.getElementById('wind').textContent = `${Math.round(data.wind_mph)} mph ${data.wind_dir}`;
+            document.getElementById('humidity').textContent = `${data.humidity}%`;
+            document.getElementById('precipitation').textContent = `${data.precip_chance}%`; // Percentage already included in label
+            
+            const now = new Date();
+            document.getElementById('update-time').textContent = `Data updated as of ${now.toLocaleTimeString()}`;
+        }
+
+        async function fetchWeatherData() {
+            const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=39.7684&longitude=-86.1580&hourly=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,relative_humidity_2m,precipitation_probability&forecast_days=1&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America/Indiana/Indianapolis";
+            
+            try {
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const apiData = await response.json();
+            
+                const currentHourIndex = 0;
+
+                const temp = apiData.hourly.temperature_2m[currentHourIndex];
+                const feelsLike = apiData.hourly.apparent_temperature[currentHourIndex];
+                const code = apiData.hourly.weather_code[currentHourIndex];
+                const windSpeed = apiData.hourly.wind_speed_10m[currentHourIndex];
+                const windDegree = apiData.hourly.wind_direction_10m[currentHourIndex];
+                const humidity = apiData.hourly.relative_humidity_2m[currentHourIndex];
+                const precipProb = apiData.hourly.precipitation_probability[currentHourIndex];
+
+                const details = getWeatherDetails(code);
+                const windDir = getWindDirection(windDegree);
+
+                const realData = {
+                    temp_f: temp,
+                    feelslike_f: feelsLike,
+                    condition: details.condition,
+                    wind_mph: windSpeed,
+                    wind_dir: windDir,
+                    humidity: humidity,
+                    precip_chance: precipProb,
+                    icon: details.icon
+                };
+
+                updateWeatherDisplay(realData);
+
+            } catch (error) {
+                console.error("Could not fetch current weather data:", error);
+                document.getElementById('conditions').textContent = "Weather data unavailable.";
+                document.getElementById('update-time').textContent = "Failed to load current data. Please check console for errors.";
+                document.getElementById('weather-icon').textContent = "⚠️";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                
+                const icon = button.querySelector('svg');
+                if (menu.classList.contains('hidden')) {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+                } else {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+                }
+            });
+
+            fetchWeatherData();
+        });
+    </script>
+
+</body>
+</html>

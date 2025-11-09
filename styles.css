@@ -1,0 +1,12 @@
+.hero-bg {
+    background-image: url('https://placehold.co/1200x600/1e3a8a/ffffff?text=Indianapolis+Skyline+Placeholder');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 40vh;
+}
+
+.weather-card {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.85);
+}
