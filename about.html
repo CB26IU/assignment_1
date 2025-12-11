@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndyWeather Hub - Data Source</title> 
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'indy-blue': '#1e3a8a', // Darker Blue
+                        'indy-gold': '#facc15', // Accent Gold
+                        'sky-light': '#38bdf8', // Light Blue for weather
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    </head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-extrabold text-indy-blue tracking-wide">
+                        Indy<span class="text-sky-light">Weather</span>
+                    </a>
+                </div>
+                <div class="hidden sm:flex space-x-6 text-lg font-medium">
+                    <a href="index.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">About</a>
+                    <a href="facts.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Facts</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Contact</a>
+                </div>
+
+                <button id="mobile-menu-button" class="sm:hidden p-2 rounded-md text-indy-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indy-blue">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+
+    </header>
+
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold text-indy-blue mb-4">
+            🔍 Where Does Our Weather Data Come From?
+        </h1>
+        <p class="text-xl text-gray-600 mb-10">
+            Reliable data is essential for accurate forecasting. Here is an overview of the service we use to power IndyWeather Hub.
+        </p>
+        
+        <div class="space-y-12">
+            
+            <section>
+                <h2 class="text-3xl font-bold text-indy-blue mb-4 border-b-2 border-sky-light pb-2">
+                    Our Primary Data Source
+                </h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    The current conditions and forecasts you see on the IndyWeather Hub homepage are provided by the **Open-Meteo API**.
+                </p>
+                <blockquote class="p-4 my-6 bg-gray-100 border-l-4 border-indy-gold text-gray-700 italic">
+                    <p class="mb-2">
+                        An **API (Application Programming Interface)** is essentially a messenger that allows our website to request and receive up-to-the-minute weather information from a remote weather server.
+                    </p>
+                </blockquote>
+                <p class="text-lg text-gray-700">
+                    This service handles the complex task of gathering meteorological measurements, freeing us to focus on presenting the information clearly and quickly for the Indianapolis area.
+                </p>
+            </section>
+
+            <hr class="border-t border-indy-gold">
+
+            <section>
+                <h2 class="text-3xl font-bold text-indy-blue mb-4 border-b-2 border-sky-light pb-2">
+                    About Open-Meteo
+                </h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    Open-Meteo is a service that provides **free access to open-source weather forecast models** from major governmental and research institutions worldwide.
+                </p>
+                <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 ml-4">
+                    <li>
+                        **Source of Forecasts:** Open-Meteo collects data from high-quality, publicly available prediction models, such as those run by government weather agencies.
+                    </li>
+                    <li>
+                        **Reliability:** By relying on these authoritative sources, Open-Meteo ensures the underlying forecast data is scientifically sound and frequently updated.
+                    </li>
+                    <li>
+                        **Global Scope:** While we focus on Indianapolis, Open-Meteo aggregates weather information for any location around the world.
+                    </li>
+                </ul>
+                <p class="text-lg text-gray-700 mt-4">
+                    When our website loads, it simply asks the Open-Meteo API, "What is the current temperature, wind speed, and weather condition for the specific coordinates of Indianapolis?" Open-Meteo answers instantly, and we translate that into the display you see on the home page.
+                </p>
+            </section>
+
+            <hr class="border-t border-indy-gold">
+
+            <section>
+                <h2 class="text-3xl font-bold text-indy-blue mb-4 border-b-2 border-sky-light pb-2">
+                    Quick Summary of the Data Flow
+                </h2>
+                <ol class="list-decimal list-inside space-y-3 text-lg text-gray-700 ml-4">
+                    <li>**Request:** Your web browser sends a request to the Open-Meteo server.</li>
+                    <li>**Collection:** Open-Meteo compiles the latest forecast data for Indianapolis.</li>
+                    <li>**Delivery:** The server sends the raw weather numbers back to your browser.</li>
+                    <li>**Display:** Our website code quickly turns those numbers into easy-to-read text, temperatures in Fahrenheit, and helpful weather icons.</li>
+                </ol>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-indy-blue text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-lg font-semibold">
+                    &copy; 2025 IndyWeather Hub. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-indy-gold transition duration-150">Privacy Policy</a>
+                    <a href="contact.html" class="hover:text-indy-gold transition duration-150">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                
+                // Toggle the icon between hamburger (menu open) and X (menu close)
+                const icon = button.querySelector('svg');
+                if (menu.classList.contains('hidden')) {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+                } else {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

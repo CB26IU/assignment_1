@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - IndyWeather Hub</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'indy-blue': '#1e3a8a', // Darker Blue
+                        'indy-gold': '#facc15', // Accent Gold
+                        'sky-light': '#38bdf8', // Light Blue for weather
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 min-h-screen flex flex-col">
+
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-extrabold text-indy-blue tracking-wide">
+                        Indy<span class="text-sky-light">Weather</span>
+                    </a>
+                </div>
+                <div class="hidden sm:flex space-x-6 text-lg font-medium">
+                    <a href="index.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">About</a>
+                    <a href="facts.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Facts</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="sm:hidden p-2 rounded-md text-indy-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indy-blue">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+
+        <div id="mobile-menu" class="hidden sm:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">About</a>
+                <a href="facts.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Facts</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
+        <div class="text-center bg-white p-10 md:p-16 rounded-xl shadow-2xl max-w-2xl border-t-8 border-indy-gold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 mx-auto text-sky-light mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-indy-blue mb-4">
+                Message Sent! Thank You.
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+                We appreciate you taking the time to contact us. We aim to respond to all inquiries within 1-2 business days.
+            </p>
+            <a href="index.html" class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-full shadow-sm text-white bg-indy-blue hover:bg-sky-light transition duration-300 focus:outline-none focus:ring-4 focus:ring-indy-blue/50">
+                Return to Homepage
+            </a>
+        </div>
+    </main>
+    <footer class="bg-indy-blue text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-lg font-semibold">
+                    &copy; 2025 IndyWeather Hub. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-indy-gold transition duration-150">Privacy Policy</a>
+                    <a href="contact.html" class="hover:text-indy-gold transition duration-150">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            
+                // Toggle the icon between hamburger (menu open) and X (menu close)
+                const icon = button.querySelector('svg');
+                if (menu.classList.contains('hidden')) {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+                } else {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

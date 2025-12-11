@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndyWeather Hub - Fun Facts</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'indy-blue': '#1e3a8a', // Darker Blue
+                        'indy-gold': '#facc15', // Accent Gold
+                        'sky-light': '#38bdf8', // Light Blue for weather
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-extrabold text-indy-blue tracking-wide">
+                        Indy<span class="text-sky-light">Weather</span>
+                    </a>
+                </div>
+                <div class="hidden sm:flex space-x-6 text-lg font-medium">
+                    <a href="index.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">About</a>
+                    <a href="facts.html" class="text-indy-blue border-b-2 border-sky-light pb-1">Facts</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-sky-light transition duration-150 border-b-2 border-transparent hover:border-sky-light pb-1">Contact</a>
+                </div>
+
+                <button id="mobile-menu-button" class="sm:hidden p-2 rounded-md text-indy-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indy-blue">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+
+        <div id="mobile-menu" class="hidden sm:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">About</a>
+                <a href="facts.html" class="block px-3 py-2 rounded-md text-base font-medium text-indy-blue bg-sky-light/10">Facts</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-sky-light">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold text-indy-blue mb-4">
+            🤯 10 Fun and Quick Weather Facts
+        </h1>
+        <p class="text-xl text-gray-600 mb-10">
+            The atmosphere is full of surprises! Here are ten amazing facts about the Earth's weather, climate, and atmosphere.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+            
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Lightning's Heat</h2>
+                <p class="text-lg text-gray-700">A bolt of **lightning** can heat the surrounding air to temperatures up to **50,000°F**—which is five times hotter than the surface of the Sun!</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Raindrop Shape</h2>
+                <p class="text-lg text-gray-700">Raindrops are not teardrop-shaped. As they fall, air resistance flattens them, making them look more like **hamburger buns**.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Cloud Weight</h2>
+                <p class="text-lg text-gray-700">Even though they float, an average **cumulus cloud** (a puffy white one) can weigh over a **million pounds** due to the water vapor and droplets it carries.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Thunder's Cause</h2>
+                <p class="text-lg text-gray-700">**Thunder** is not caused by clashing clouds; it’s the sound of the air rapidly **expanding** after being intensely heated by a lightning bolt.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">World's Driest Spot</h2>
+                <p class="text-lg text-gray-700">The driest place on Earth is not a hot desert, but the **McMurdo Dry Valleys in Antarctica**, where some areas haven't seen rain or snow for millions of years.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Fastest Wind Gust</h2>
+                <p class="text-lg text-gray-700">The fastest non-tornadic wind speed ever recorded was **253 mph** (408 km/h) on Barrow Island, Australia, during Tropical Cyclone Olivia in 1996.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Fog is a Cloud</h2>
+                <p class="text-lg text-gray-700">**Fog** is simply a **cloud that forms at or near the ground**. It forms when the air cools and the water vapor condenses into tiny droplets.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Tornado on Jupiter</h2>
+                <p class="text-lg text-gray-700">The **Great Red Spot** on Jupiter is a massive, long-lasting hurricane, or **cyclone**, that is larger than the entire planet Earth.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Windiest US State</h2>
+                <p class="text-lg text-gray-700">The state in the US with the highest average annual wind speed is **South Dakota**.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-light">
+                <h2 class="text-2xl font-bold text-indy-blue mb-3">Snowflake Uniqueness</h2>
+                <p class="text-lg text-gray-700">While they come in many forms, it is said that **no two snowflakes are exactly alike**, as the unique conditions in the atmosphere create an infinite number of crystalline patterns.</p>
+            </div>
+
+        </div>
+
+        <div class="mt-12 pt-6 border-t-2 border-indy-gold">
+            <h2 class="text-2xl font-extrabold text-indy-blue mb-2">Source of Facts</h2>
+            <p class="text-lg text-gray-700">Information gathered from the National Oceanic and Atmospheric Administration (**NOAA**) and various scientific publications on meteorology and climate.</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-indy-blue text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-lg font-semibold">
+                    &copy; 2025 IndyWeather Hub. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-indy-gold transition duration-150">Privacy Policy</a>
+                    <a href="contact.html" class="hover:text-indy-gold transition duration-150">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            
+                // Toggle the icon between hamburger (menu open) and X (menu close)
+                const icon = button.querySelector('svg');
+                if (menu.classList.contains('hidden')) {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+                } else {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
